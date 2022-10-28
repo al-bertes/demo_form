@@ -22,7 +22,7 @@ function serializeForm(formNode) {
 }
 
 async function sendData(data) {
-	return await fetch('sender.php', {
+	return await fetch('js/feedback-form/sender.php', {
 		method: 'POST',
 		body: data
 	});
