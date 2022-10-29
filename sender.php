@@ -1,8 +1,9 @@
 <?php
 // Файлы phpmailer
 ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require 'PHPMailer/src/SMTP.php';
 require "PHPMailer/src/PHPMailer.php";
 require "PHPMailer/src/Exception.php";
@@ -23,13 +24,13 @@ $body = "
 
 // Настройки PHPMailer
 $mail = new PHPMailer();
-try {
+
     $mail->isSMTP();   
     $mail->CharSet = "UTF-8";
     $mail->SMTPAuth   = true;
-    //$mail->SMTPDebug = 2;
+    $mail->SMTPDebug = 2;
     $mail->Debugoutput = function($str, $level) {$GLOBALS['status'][] = $str;};
-
+    
     // Настройки вашей почты
     $mail->Host       = 'smtp.gmail.com'; // SMTP сервера вашей почты
     $mail->Username   = 'art.bertes@gmail.com'; // Логин на почте
@@ -42,7 +43,7 @@ try {
     $mail->addAddress('askoltpupkov@gmail.com');   // Ещё один, если нужен
 
  
-}
+
 // Отправка сообщения
 $mail->isHTML(true);
 $mail->Subject = $title;
